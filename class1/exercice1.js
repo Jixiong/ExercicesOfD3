@@ -61,11 +61,22 @@ for (i = 0; i < nbSeries; i++) {
         "font-size": "12px"
     });
     
-    for (var j = 1; j <= 3; j++){    paper.path("M" + (marge + i * disColonne) + ","+ ((1 - data.series[i].values[j - 1]) * hautGraph + 20)+"L" + )
-                            }
-
     
-    for (var j = 1; j <= nbCollon; j++) {
+    paper.path("M" + (marge + 100) + "," + ((1 - data.series[i].values[0]) * hautGraph + 20) + "L" + (marge + disColonne) + "," + ((1 - data.series[i].values[0]) * hautGraph + 20)).attr({
+        stroke: "hsl(" + i * 90 + ", 81, 79)",
+        "stroke-width": "2px",
+    });
+
+
+    for (var j = 1; j <= 3; j++) {
+        paper.path("M" + (marge + j * disColonne) + "," + ((1 - data.series[i].values[j - 1]) * hautGraph + 20) + "L" + (marge + (j + 1) * disColonne) + "," + ((1 - data.series[i].values[j]) * hautGraph + 20)).attr({
+            stroke: "hsl(" + i * 90 + ", 81, 79)",
+            "stroke-width": "2px",
+        });
+    }
+
+
+    for (j = 1; j <= nbCollon; j++) {
         paper.circle((marge + j * disColonne), ((1 - data.series[i].values[j - 1]) * hautGraph + 20), 5).attr({
             "fill": "hsl(" + i * 90 + ", 81, 79)"
         });
