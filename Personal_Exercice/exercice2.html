@@ -1,0 +1,104 @@
+<!--本文件是D3.js入门教程的跟进练习，主要是极客学院的素材
+网址是http://wiki.jikexueyuan.com/project/d3wiki/
+-->
+
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>HelloWorld</title>
+    <script src="d3.min.js" charset="utf-8"></script>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+</head>
+
+<body>
+    <p>Apple</p>
+    <p id="pears">Pear</p>
+    <p class="first_class">Banana</p>
+    <p class="first_class">Banana</p>
+
+
+    <script>
+        //关于datum的练习
+        var str = "China";
+
+        var body = d3.select("body");
+        var p = body.selectAll("p");
+
+        p.datum(str);
+
+        p.text(function (d, i) {
+            return "第 " + (i + 1) + " 个元素绑定的数据是 " + d;
+        });
+        // 在上面的代码中，用到了一个无名函数 function(d, i)。当选择集需要使用被绑定的数据时，常需要这么使用。其包含两个参数，其中：
+        //d 代表数据，也就是与某元素绑定的数据。
+        //i 代表索引，代表数据的索引号，从 0 开始。
+    </script>
+
+
+
+    <script>
+        //关于data的练习
+        var dataset = ["I like dog", "I like cat", "I like snake"];
+        var body = d3.select("body");
+        var p = body.selectAll("p");
+
+        p.data(dataset)
+            .text(function (d, i) {
+                return d;
+            });
+
+        //两种之间的对比
+        //特性                datum                            data
+        //集合运算             不支持                       支持enter、exit函数
+        //唯一性识别           不支持                            不支持
+        //旧数据清除            支持                             不支持
+        //读取数据        返回集合的第一条数据                  返回集合的所有数据
+        //赋值        将集合的每个元素设置为同样的值       集合更新运算，两个集合的交集运算
+        //链式操作         后值总是覆盖前值                 不断进行集合的交集运算
+        //对空元素赋值      后续操作无效果                  可通过enter添加新元素
+    </script>
+
+
+
+    <script>
+        //增加特性的练习
+
+        //选取所有的项目进行添加特性
+        var p = body.selectAll("p");
+        p.style("color", "red");
+
+        //根据具体标签的id进行特性的增加（id之前加#）
+        var p2 = body.select("#pears");
+        p2.style("color", "blue");
+
+
+        //根据class的来进行特性的增加（class之前加.）
+        var p = body.selectAll(".first_class");
+        p.style("color", "yellow");
+    </script>
+
+    <script>
+        //元素的增添
+
+        //在body的结尾处增加一个P元素 append函数
+        body.append("p").text("添加一个P元素");
+
+        //insert插入函数
+        body.insert("p", "#pears").text("insert在第二个函数之后");
+
+        //remove进行删除
+        body.select("#pears").remove();
+        //          也可以写成
+        //        var p = body.select("#pears");
+        //        p.remove();
+    </script>
+
+
+
+</body>
+
+</html>
+<script>
+</script>
