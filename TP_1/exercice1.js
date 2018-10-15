@@ -60,8 +60,8 @@ for (i = 0; i < nbSeries; i++) {
     paper.text(marge + 50, ((1 - data.series[i].values[0]) * hautGraph + 20), data.series[i].name).attr({
         "font-size": "12px"
     });
-    
-    
+
+
     paper.path("M" + (marge + 100) + "," + ((1 - data.series[i].values[0]) * hautGraph + 20) + "L" + (marge + disColonne) + "," + ((1 - data.series[i].values[0]) * hautGraph + 20)).attr({
         stroke: "hsl(" + i * 90 + ", 81, 79)",
         "stroke-width": "2px",
